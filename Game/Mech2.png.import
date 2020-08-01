@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/clouds_bg.png-48274f64db113f12e02ec618a61452ef.stex"
+path="res://.import/Mech2.png-372e1f070d24461faf8ded379924eb5c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Layers/clouds_bg.png"
-dest_files=[ "res://.import/clouds_bg.png-48274f64db113f12e02ec618a61452ef.stex" ]
+source_file="res://Mech2.png"
+dest_files=[ "res://.import/Mech2.png-372e1f070d24461faf8ded379924eb5c.stex" ]
 
 [params]
 
