@@ -27,14 +27,14 @@ func show_past():
 		$AnimationPlayer.stop()
 		$Timer.start()
 		$Timer2.start()
-		$CPUParticles2D.speed_scale = 1
+
 	pass
 
 
 func _on_Button_pressed():
 	$Timer.stop()
 	$Timer2.stop()
-	$CPUParticles2D.speed_scale = 0
+
 	$AnimationPlayer.play("rewind")
 	pass # Replace with function body.
 
