@@ -6,35 +6,40 @@ extends Control
 # var b = "text"
 
 var screenCaptures = []
-export var maxCaptures = 600
+export var maxCaptures = 300
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
+func _input(event):
+	if(event.is_action("LMB") ) :
+		$icon.global_position = get_global_mouse_position()
+		pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	$Camera2D.position.x-=delta*16
+	pass
 func show_past():
-	$ReplayScreen.visible = true
+	$CanvasLayer/ReplayScreen.visible = true
 	if(screenCaptures.size()>0):
 		var tex = ImageTexture.new()
 		tex.create_from_image(screenCaptures.pop_back())
 		
-		$ReplayScreen.texture = tex
+		$CanvasLayer/ReplayScreen.texture = tex
 	else:
-		$ReplayScreen.visible = false
+		$CanvasLayer/ReplayScreen.visible = false
 		$AnimationPlayer.stop()
 		$Timer.start()
 		$Timer2.start()
-
+		$Camera2D.position.x = 0
+		$Label.text = "0"
 	pass
 
 
 func _on_Button_pressed():
 	$Timer.stop()
 	$Timer2.stop()
-
 	$AnimationPlayer.play("rewind")
 	pass # Replace with function body.
 
@@ -44,7 +49,7 @@ func _on_Timer_timeout():
 	screen.flip_y()
 	screenCaptures.append(screen)
 	if(screenCaptures.size()>maxCaptures):
-		screenCaptures.pop_front()
+		_on_Button_pressed()
 	print(screenCaptures.size())
 	pass # Replace with function body.
 
