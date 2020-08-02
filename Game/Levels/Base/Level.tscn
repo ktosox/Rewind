@@ -1,12 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Levels/Base/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Props/TestProp.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/Base/Level.gd" type="Script" id=4]
 [ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Player/Watcher.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/Base/ItemAcceptor.gd" type="Script" id=7]
 
-[sub_resource type="Environment" id=2]
+[sub_resource type="Environment" id=1]
 background_mode = 4
 dof_blur_far_distance = 0.09
 dof_blur_far_transition = 2.1
@@ -20,6 +22,24 @@ glow_strength = 0.96
 glow_bloom = 0.38
 glow_blend_mode = 1
 
+[sub_resource type="Animation" id=2]
+resource_name = "Rewind"
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "play_rewind"
+} ]
+}
+
 [node name="Level" type="Navigation2D"]
 script = ExtResource( 4 )
 
@@ -31,7 +51,7 @@ position = Vector2( 249.237, 253.774 )
 guardQuadrant = 0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 2 )
+environment = SubResource( 1 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -39,5 +59,38 @@ __meta__ = {
 [node name="TestProp" parent="." instance=ExtResource( 2 )]
 position = Vector2( 341.836, 136.07 )
 
+[node name="Watcher" parent="." instance=ExtResource( 6 )]
+current = false
+process_mode = 0
+
 [node name="Player" parent="." instance=ExtResource( 3 )]
 position = Vector2( 412.217, 192.197 )
+
+[node name="RewindLayer" type="CanvasLayer" parent="."]
+
+[node name="ScreenRewinder" type="AnimationPlayer" parent="RewindLayer"]
+playback_speed = 8.0
+anims/Rewind = SubResource( 2 )
+
+[node name="ReplayScreen" type="TextureRect" parent="RewindLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemAcceptor" type="Control" parent="RewindLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CaptureRate" type="Timer" parent="."]
+process_mode = 0
+autostart = true
+[connection signal="timeout" from="CaptureRate" to="." method="_on_CaptureRate_timeout"]
