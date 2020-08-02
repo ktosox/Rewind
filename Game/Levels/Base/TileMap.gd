@@ -34,9 +34,9 @@ func load_floor(tileRange):
 	for t in tileRange:
 		var specialTiles = [Vector2(0,0),Vector2(2,0),Vector2(3,0)]
 		var tile = Vector2(1,0)
-		if(randi()%4==1):
+		if(randi()%8==1):
 			tile = specialTiles[randi()%specialTiles.size()]
-		set_cell(t.x,t.y,3,false,false,false,tile)
+		set_cell(t.x,t.y,3,bool(randi()%2),bool(randi()%2),false,tile)
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
