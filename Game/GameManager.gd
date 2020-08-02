@@ -1,17 +1,18 @@
-extends Navigation2D
+extends Node
 
-export var level_ID = 0
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+var currentPlayer
+var currentLevel
+var gameSeed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	GM.currentLevel = self
+	randomize()
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func get_path_to_player(start):
+	pass

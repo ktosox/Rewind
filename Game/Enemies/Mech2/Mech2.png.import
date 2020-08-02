@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Mech4.png-5e561e485512cb7a232cc925464c5235.stex"
+path="res://.import/Mech2.png-a96ae85e3943077136e5772718271b33.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Mech4.png"
-dest_files=[ "res://.import/Mech4.png-5e561e485512cb7a232cc925464c5235.stex" ]
+source_file="res://Enemies/Mech2/Mech2.png"
+dest_files=[ "res://.import/Mech2.png-a96ae85e3943077136e5772718271b33.stex" ]
 
 [params]
 
