@@ -8,7 +8,7 @@
 [ext_resource path="res://Player/Watcher.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/Base/ItemAcceptor.gd" type="Script" id=7]
 
-[sub_resource type="Environment" id=2]
+[sub_resource type="Environment" id=1]
 background_mode = 4
 dof_blur_far_distance = 0.09
 dof_blur_far_transition = 2.1
@@ -22,9 +22,8 @@ glow_strength = 0.96
 glow_bloom = 0.38
 glow_blend_mode = 1
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "Rewind"
-length = 0.6
 loop = true
 tracks/0/type = "method"
 tracks/0/path = NodePath("..")
@@ -33,7 +32,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.6 ),
+"times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -52,7 +51,7 @@ position = Vector2( 249.237, 253.774 )
 guardQuadrant = 0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 2 )
+environment = SubResource( 1 )
 __meta__ = {
 "_editor_description_": ""
 }
@@ -71,7 +70,7 @@ position = Vector2( 412.217, 192.197 )
 
 [node name="ScreenRewinder" type="AnimationPlayer" parent="RewindLayer"]
 playback_speed = 8.0
-anims/Rewind = SubResource( 3 )
+anims/Rewind = SubResource( 2 )
 
 [node name="ReplayScreen" type="TextureRect" parent="RewindLayer"]
 visible = false
@@ -92,6 +91,6 @@ __meta__ = {
 }
 
 [node name="CaptureRate" type="Timer" parent="."]
-wait_time = 0.8
+process_mode = 0
 autostart = true
 [connection signal="timeout" from="CaptureRate" to="." method="_on_CaptureRate_timeout"]

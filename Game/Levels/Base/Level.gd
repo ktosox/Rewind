@@ -30,8 +30,10 @@ func toggle_rewind():
 	if(isRewinding):
 		if($RewindLayer/ScreenRewinder.is_playing()):
 			$RewindLayer/ScreenRewinder.stop()
+			GM.currentOverlay.toggle_bars()
 		else:
 			$RewindLayer/ScreenRewinder.play("Rewind")
+			GM.currentOverlay.toggle_bars()
 	
 	pass
 
@@ -62,7 +64,6 @@ func _on_CaptureRate_timeout():
 	var camera = GM.currentPlayer.global_position
 	var screen = get_viewport().get_texture().get_data()
 	screen.flip_y()
-	
 	screen.resize(640,360)
 	screenCaptures.append(screen)
 	cameraCaptures.append(camera)

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Player/Overlay.gd" type="Script" id=1]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "HideBars"
 length = 0.3
 tracks/0/type = "value"
@@ -18,8 +18,7 @@ tracks/0/keys = {
 "values": [ 20.0 ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "RollBars"
+[sub_resource type="Animation" id=2]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Empty:size_flags_stretch_ratio")
@@ -71,8 +70,8 @@ size_flags_horizontal = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Layout"]
 autoplay = "HideBars"
-anims/HideBars = SubResource( 2 )
-anims/RollBars = SubResource( 1 )
+anims/HideBars = SubResource( 1 )
+anims/RollBars = SubResource( 2 )
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 anchor_right = 1.0
