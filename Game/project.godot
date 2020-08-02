@@ -18,6 +18,10 @@ _global_script_class_icons={
 config/name="Game"
 config/icon="res://icon.png"
 
+[autoload]
+
+GM="*res://GameManager.tscn"
+
 [display]
 
 window/size/width=1280

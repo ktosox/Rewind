@@ -4,11 +4,11 @@
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Player/Watcher.tscn" type="PackedScene" id=3]
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 7.5052
 height = 8.71966
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "Bump"
 length = 0.2
 tracks/0/type = "value"
@@ -24,8 +24,7 @@ tracks/0/keys = {
 "values": [ 1.2, 2.0 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Shift"
+[sub_resource type="Animation" id=3]
 length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:moveSpeed")
@@ -40,7 +39,9 @@ tracks/0/keys = {
 "values": [ 0.2, 2 ]
 }
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"player",
+]]
 collision_layer = 8
 collision_mask = 416
 script = ExtResource( 2 )
@@ -49,7 +50,7 @@ script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="icon" type="Sprite" parent="."]
 scale = Vector2( 0.3, 0.3 )
@@ -57,5 +58,5 @@ texture = ExtResource( 1 )
 
 [node name="ChangeSpeed" type="AnimationPlayer" parent="."]
 playback_speed = 2.6
-anims/Bump = SubResource( 3 )
-anims/Shift = SubResource( 2 )
+anims/Bump = SubResource( 2 )
+anims/Shift = SubResource( 3 )

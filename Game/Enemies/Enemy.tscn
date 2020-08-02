@@ -1,0 +1,251 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Enemies/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/Mech2/Mech2.png" type="Texture" id=2]
+[ext_resource path="res://Enemies/scan_light.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 44.7278, 20.4785 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "Dissable"
+length = 5.0
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "sleep" ],
+"method": "change_job"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Guard0"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 2, 3.5, 4 ),
+"transitions": PoolRealArray( 0.5, 2, 0.5, 2, 1 ),
+"update": 0,
+"values": [ 0.0, 90.0, 90.0, 0.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/ScanLight:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Guard1"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 2, 3.5, 4 ),
+"transitions": PoolRealArray( 0.5, 2, 0.5, 2, 1 ),
+"update": 0,
+"values": [ 90.0, 180.0, 180.0, 90.0, 90.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/ScanLight:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Guard2"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 2, 3.5, 4 ),
+"transitions": PoolRealArray( 0.5, 2, 0.5, 2, 1 ),
+"update": 0,
+"values": [ 180.0, 270.0, 270.0, 180.0, 180.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/ScanLight:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "Guard3"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5, 2, 3.5, 4 ),
+"transitions": PoolRealArray( 0.5, 2, 0.5, 2, 1 ),
+"update": 0,
+"values": [ 270.0, 360.0, 360.0, 270.0, 270.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/ScanLight:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Hunt"
+length = 0.8
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "update_target"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Sleep"
+length = 3.0
+loop = true
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scan_for_player"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/ScanLight:energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2.7, 2.9, 3 ),
+"transitions": PoolRealArray( 1, 1, 2, 0.5 ),
+"update": 0,
+"values": [ 0.0, 0.0, 2.0, 0.0 ]
+}
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 201.113
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( -120, -140, 0, 20, 120, -140, 0, -200 )
+
+[node name="Enemy" type="RigidBody2D" groups=[
+"enemy",
+]]
+rotation = 0.00120871
+collision_layer = 32
+collision_mask = 424
+gravity_scale = 0.0
+script = ExtResource( 1 )
+guardQuadrant = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="JobPatterns" type="AnimationPlayer" parent="."]
+autoplay = "Sleep"
+anims/Dissable = SubResource( 7 )
+anims/Guard0 = SubResource( 6 )
+anims/Guard1 = SubResource( 8 )
+anims/Guard2 = SubResource( 9 )
+anims/Guard3 = SubResource( 10 )
+anims/Hunt = SubResource( 3 )
+anims/Sleep = SubResource( 4 )
+
+[node name="TrackRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrackRange"]
+shape = SubResource( 11 )
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="ScanRange" type="Area2D" parent="Body"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/ScanRange"]
+shape = SubResource( 5 )
+
+[node name="ScanLight" type="Light2D" parent="Body"]
+position = Vector2( 0, -10.2379 )
+scale = Vector2( 1.5607, 1.50953 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, -120 )
+texture_scale = 0.9
+color = Color( 0.988235, 0, 0, 1 )
+
+[node name="Mech2" type="Sprite" parent="Body"]
+texture = ExtResource( 2 )
+
+[node name="Legs" type="Node2D" parent="."]
+[connection signal="body_entered" from="Body/ScanRange" to="." method="_on_ScanRange_body_entered"]

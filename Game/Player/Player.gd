@@ -30,6 +30,8 @@ func _physics_process(delta):
 #	print(moveSpeed+bonusSpeed)
 	var colision = move_and_collide(delta*playerDir*(moveSpeed*bonusSpeed),false )
 	if (colision != null):
+		if(colision.collider.is_in_group("props")):
 #		$ChangeSpeed.play("Bump")
-		colision.collider.apply_central_impulse(-colision.normal * moveSpeed*bonusSpeed)
+			var offset = global_position-colision.collider.global_position
+			colision.collider.apply_impulse(offset,-colision.normal * moveSpeed*bonusSpeed)
 	pass
