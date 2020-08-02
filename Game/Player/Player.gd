@@ -4,7 +4,9 @@ extends KinematicBody2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+var pastDir = Vector2(0,0)
+export var moveSpeed = 2.0
+export var bonusSpeed = 40.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,6 +21,15 @@ func get_input():
 	pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	var player_dir = get_input()
-	move_and_collide(player_dir)
+	var playerDir = get_input()
+
+	if(abs(pastDir.direction_to(playerDir).x)>0.99 or abs(pastDir.direction_to(playerDir).y)>0.99 ):
+#		print(pastDir.direction_to(playerDir))
+		$ChangeSpeed.play("Shift")
+	pastDir = playerDir
+#	print(moveSpeed+bonusSpeed)
+	var colision = move_and_collide(delta*playerDir*(moveSpeed*bonusSpeed),false )
+	if (colision != null):
+#		$ChangeSpeed.play("Bump")
+		colision.collider.apply_central_impulse(-colision.normal * moveSpeed*bonusSpeed)
 	pass
