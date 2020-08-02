@@ -90,5 +90,4 @@ position = Vector2( 55.1197, -7.69466 )
 
 [node name="Enemy" parent="." instance=ExtResource( 6 )]
 position = Vector2( 113.669, -22.6413 )
-guardQuadrant = 0
 [connection signal="timeout" from="CaptureRate" to="." method="_on_CaptureRate_timeout"]

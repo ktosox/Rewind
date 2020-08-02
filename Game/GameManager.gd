@@ -17,7 +17,7 @@ func _ready():
 
 
 func get_path_to_player(start,end):
-	return currentLevel.get_simple_path(start,end, true)
+	return currentLevel.get_simple_path(currentLevel.get_closest_point(start),currentLevel.get_closest_point(end), true)
 	pass
 
 
