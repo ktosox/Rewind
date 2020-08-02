@@ -8,7 +8,7 @@ var currentPlayer
 var currentLevel
 var currentOverlay
 export var currentProgress = 0
-export var maxCaptures = 250
+export var maxCaptures = 25
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
