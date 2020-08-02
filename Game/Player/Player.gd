@@ -10,6 +10,7 @@ export var bonusSpeed = 40.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GM.currentPlayer = self
 	pass # Replace with function body.
 
 func get_input():
@@ -34,4 +35,8 @@ func _physics_process(delta):
 #		$ChangeSpeed.play("Bump")
 			var offset = global_position-colision.collider.global_position
 			colision.collider.apply_impulse(offset,-colision.normal * moveSpeed*bonusSpeed)
+	pass
+	
+func toggle_camera():
+	$Watcher.current = !$Watcher.current
 	pass
