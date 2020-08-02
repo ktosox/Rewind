@@ -16,7 +16,8 @@ func _ready():
 	pass # Replace with function body.
 
 
-func get_path_to_player(start):
+func get_path_to_player(start,end):
+	return currentLevel.get_simple_path(start,end, true)
 	pass
 
 

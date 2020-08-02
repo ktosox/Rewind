@@ -1,13 +1,85 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Enemies/Enemy.gd" type="Script" id=1]
-[ext_resource path="res://Enemies/Mech2/Mech2.png" type="Texture" id=2]
+[ext_resource path="res://Enemies/MechParts/wide5.png" type="Texture" id=2]
 [ext_resource path="res://Enemies/scan_light.png" type="Texture" id=3]
+[ext_resource path="res://Enemies/MechParts/foot1.png" type="Texture" id=4]
+[ext_resource path="res://Enemies/MechParts/lasser1.png" type="Texture" id=5]
+[ext_resource path="res://Enemies/MechParts/part2.png" type="Texture" id=6]
+[ext_resource path="res://Enemies/MechParts/part3.png" type="Texture" id=7]
+[ext_resource path="res://Enemies/MechParts/wide4.png" type="Texture" id=8]
+[ext_resource path="res://Enemies/MechParts/body4.png" type="Texture" id=9]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 44.7278, 20.4785 )
+[sub_resource type="Curve2D" id=13]
+_data = {
+"points": PoolVector2Array(  )
+}
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="CircleShape2D" id=1]
+radius = 201.113
+
+[sub_resource type="Animation" id=11]
+resource_name = "Stop"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Left:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 3,
+"values": [ Vector2( -10, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Right:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 3,
+"values": [ Vector2( 10, 0 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "Walk"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Left:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, -2 ),
+"update": 0,
+"values": [ Vector2( -10, 0 ), Vector2( -10, -5 ), Vector2( -10, 5 ), Vector2( -10, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Right:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, -2 ),
+"update": 0,
+"values": [ Vector2( 10, 0 ), Vector2( 10, 5 ), Vector2( 10, -5 ), Vector2( 10, 0 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=14]
+radius = 10.7758
+height = 15.0489
+
+[sub_resource type="Animation" id=3]
 resource_name = "Dissable"
 length = 5.0
 tracks/0/type = "method"
@@ -25,7 +97,7 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "Guard0"
 length = 4.0
 loop = true
@@ -54,7 +126,7 @@ tracks/1/keys = {
 "values": [ 1.0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=5]
 resource_name = "Guard1"
 length = 4.0
 loop = true
@@ -83,7 +155,7 @@ tracks/1/keys = {
 "values": [ 1.0 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=6]
 resource_name = "Guard2"
 length = 4.0
 loop = true
@@ -112,7 +184,7 @@ tracks/1/keys = {
 "values": [ 1.0 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=7]
 resource_name = "Guard3"
 length = 4.0
 loop = true
@@ -141,8 +213,7 @@ tracks/1/keys = {
 "values": [ 1.0 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Hunt"
+[sub_resource type="Animation" id=8]
 length = 0.8
 loop = true
 tracks/0/type = "method"
@@ -160,8 +231,7 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Sleep"
+[sub_resource type="Animation" id=9]
 length = 3.0
 loop = true
 tracks/0/type = "method"
@@ -191,11 +261,8 @@ tracks/1/keys = {
 "values": [ 0.0, 0.0, 2.0, 0.0 ]
 }
 
-[sub_resource type="CircleShape2D" id=11]
-radius = 201.113
-
-[sub_resource type="ConvexPolygonShape2D" id=5]
-points = PoolVector2Array( -120, -140, 0, 20, 120, -140, 0, -200 )
+[sub_resource type="ConvexPolygonShape2D" id=10]
+points = PoolVector2Array( -110, -110, 0, 0, 110, -110, 0, -160 )
 
 [node name="Enemy" type="RigidBody2D" groups=[
 "enemy",
@@ -203,49 +270,109 @@ points = PoolVector2Array( -120, -140, 0, 20, 120, -140, 0, -200 )
 rotation = 0.00120871
 collision_layer = 32
 collision_mask = 424
+mass = 20.0
 gravity_scale = 0.0
+linear_damp = 2.0
+angular_damp = 2.0
 script = ExtResource( 1 )
 guardQuadrant = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+[node name="Path" type="Path2D" parent="."]
+curve = SubResource( 13 )
 
-[node name="JobPatterns" type="AnimationPlayer" parent="."]
-autoplay = "Sleep"
-anims/Dissable = SubResource( 7 )
-anims/Guard0 = SubResource( 6 )
-anims/Guard1 = SubResource( 8 )
-anims/Guard2 = SubResource( 9 )
-anims/Guard3 = SubResource( 10 )
-anims/Hunt = SubResource( 3 )
-anims/Sleep = SubResource( 4 )
+[node name="Candy" type="PathFollow2D" parent="Path"]
+
+[node name="Line2D" type="Line2D" parent="."]
 
 [node name="TrackRange" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TrackRange"]
-shape = SubResource( 11 )
+visible = false
+shape = SubResource( 1 )
+
+[node name="Legs" type="Node2D" parent="."]
+
+[node name="Left" type="Node2D" parent="Legs"]
+position = Vector2( -10, 0 )
+
+[node name="foot1" type="Sprite" parent="Legs/Left"]
+texture = ExtResource( 4 )
+
+[node name="Right" type="Node2D" parent="Legs"]
+position = Vector2( 10, 0 )
+
+[node name="foot1" type="Sprite" parent="Legs/Right"]
+texture = ExtResource( 4 )
+flip_h = true
+
+[node name="body4" type="Sprite" parent="Legs"]
+position = Vector2( 0, 3 )
+texture = ExtResource( 9 )
+
+[node name="wide4" type="Sprite" parent="Legs"]
+position = Vector2( 0, 7 )
+texture = ExtResource( 8 )
+flip_v = true
+
+[node name="WalkAnimation" type="AnimationPlayer" parent="Legs"]
+autoplay = "Walk"
+anims/Stop = SubResource( 11 )
+anims/Walk = SubResource( 12 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 14 )
+
+[node name="JobPatterns" type="AnimationPlayer" parent="."]
+autoplay = "Sleep"
+anims/Dissable = SubResource( 3 )
+anims/Guard0 = SubResource( 4 )
+anims/Guard1 = SubResource( 5 )
+anims/Guard2 = SubResource( 6 )
+anims/Guard3 = SubResource( 7 )
+anims/Hunt = SubResource( 8 )
+anims/Sleep = SubResource( 9 )
 
 [node name="Body" type="Node2D" parent="."]
 
-[node name="ScanRange" type="Area2D" parent="Body"]
+[node name="lasser2" type="Sprite" parent="Body"]
+position = Vector2( 17.7447, 2.67536 )
+texture = ExtResource( 5 )
+
+[node name="lasser1" type="Sprite" parent="Body"]
+position = Vector2( -19.6568, 2.36662 )
+texture = ExtResource( 5 )
+
+[node name="wide5" type="Sprite" parent="Body"]
+position = Vector2( -0.684055, 8.63233 )
+texture = ExtResource( 2 )
+
+[node name="part4" type="Sprite" parent="Body"]
+position = Vector2( -0.792345, 7.00207 )
+texture = ExtResource( 7 )
+
+[node name="part2" type="Sprite" parent="Body"]
+position = Vector2( -7.80163, 4.25317 )
+texture = ExtResource( 6 )
+
+[node name="part3" type="Sprite" parent="Body"]
+position = Vector2( 6.9083, 4.498 )
+texture = ExtResource( 6 )
+flip_h = true
+
+[node name="DetectionRange" type="Area2D" parent="Body"]
 collision_layer = 0
 collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/ScanRange"]
-shape = SubResource( 5 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/DetectionRange"]
+shape = SubResource( 10 )
 
 [node name="ScanLight" type="Light2D" parent="Body"]
-position = Vector2( 0, -10.2379 )
-scale = Vector2( 1.5607, 1.50953 )
+position = Vector2( -0.0273416, -22.6204 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, -120 )
-texture_scale = 0.9
 color = Color( 0.988235, 0, 0, 1 )
-
-[node name="Mech2" type="Sprite" parent="Body"]
-texture = ExtResource( 2 )
-
-[node name="Legs" type="Node2D" parent="."]
-[connection signal="body_entered" from="Body/ScanRange" to="." method="_on_ScanRange_body_entered"]
+energy = 3.14
+[connection signal="body_entered" from="Body/DetectionRange" to="." method="_on_DetectionRange_body_entered"]

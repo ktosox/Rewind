@@ -19,8 +19,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if(currentJob =="hunt"):
+		walk(delta)
 		$Body.look_at(target.global_position)
-		$Body.rotate(PI/2)
+		$Body.rotate(PI/2
+		)
 	pass
 
 func change_job(newJob):
@@ -38,12 +40,17 @@ func change_job(newJob):
 	pass
 
 func scan_for_player():
-	var body = $Body/ScanRange.get_overlapping_bodies()
+	var body = $Body/DetectionRange.get_overlapping_bodies()
 	if(body.size()>0):
 		change_job("hunt")
 		target = body[randi()%body.size()]
+		
 	pass
 	
+
+func walk(delta):
+#	$Path/Candy.offset+=delta*
+	pass
 
 func pew_pew():
 	print("pew pew")
@@ -54,8 +61,17 @@ func update_target():
 	if !$TrackRange.get_overlapping_bodies().has(target):
 		target=null
 		change_job("sleep")
+	else:
+		$Path.curve.clear_points()
+		$Path.curve.add_point(Vector2(0,0))
+		var pathPoints = GM.get_path_to_player(global_position,target.global_position)
+		for z in pathPoints :
+			$Path.curve.add_point(z-global_position)
+		$Line2D.points = $Path.curve.get_baked_points()
+		pass
 
-func _on_ScanRange_body_entered(body):
+
+func _on_DetectionRange_body_entered(body):
 	if(body.is_in_group("player") and currentJob=="guard"):
 		$Body/ScanLight.energy=0
 		change_job("hunt")
