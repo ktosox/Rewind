@@ -10,6 +10,7 @@ var cameraCaptures = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
 	GM.currentLevel = self
 	pass # Replace with function body.
 
@@ -43,17 +44,18 @@ func end_rewind():
 	$RewindLayer/ReplayScreen.visible = false
 	$RewindLayer/ScreenRewinder.stop()
 	$CaptureRate.start()
-	GM.currentPlayer.toggle_camera()
+	$Watcher.followPlayer = true
 	$RewindLayer/ReplayScreen.texture = null
 	pass
 
 func start_rewind():
 	GM.currentProgress = 0
 	isRewinding = true
+	$Watcher.followPlayer = false
 	$RewindLayer/ReplayScreen.visible = true
 	$RewindLayer/ScreenRewinder.play("Rewind")
 	$CaptureRate.stop()
-	GM.currentPlayer.toggle_camera()
+
 	$Watcher.global_position = GM.currentPlayer.global_position
 	$Watcher.current=true
 	pass
@@ -61,7 +63,7 @@ func start_rewind():
 
 func _on_CaptureRate_timeout():
 	GM.currentProgress +=1
-	var camera = GM.currentPlayer.global_position
+	var camera = $Watcher.global_position
 	var screen = get_viewport().get_texture().get_data()
 	screen.flip_y()
 	screen.resize(640,360)

@@ -37,6 +37,3 @@ func _physics_process(delta):
 			colision.collider.apply_impulse(offset,-colision.normal * moveSpeed*bonusSpeed)
 	pass
 	
-func toggle_camera():
-	$Watcher.current = !$Watcher.current
-	pass
