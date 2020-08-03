@@ -54,8 +54,8 @@ __meta__ = {
 }
 
 [node name="Watcher" parent="." instance=ExtResource( 3 )]
-current = false
 process_mode = 0
+followMargin = Vector2( 280, 140 )
 
 [node name="RewindLayer" type="CanvasLayer" parent="."]
 
