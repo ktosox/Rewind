@@ -5,5 +5,6 @@ Goals : show the player character, introduce the player to level progression
 Level 2 - a longer tunnel, "C" shped ,  a total of 2 screens wide, and 2 screens tall, 
 expanded details regarding controls
 Goals : introduce the player to camera movement, explain what skills exist, intrduce game pausing
-Level 3 - a room with traps and a door that closes after a certain ammount of time, 
-Goals : introduce level rewinding mechanic
+Level 3 - a room with traps and a door that closes after a certain ammount of time, make sure the door is on
+the screen as the player spawn 
+Goals : introduce level rewinding mechanic, intrudce timed doors and traps
