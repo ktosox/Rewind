@@ -14,8 +14,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var player_pos = GM.currentPlayer.global_position
+	
 	if(followPlayer):
+		var player_pos = GM.currentPlayer.global_position
 		if abs(global_position.x - player_pos.x) >followMargin.x :
 			global_position.x -= 2*followMargin.x*sign(global_position.x - player_pos.x)
 		if abs(global_position.y - player_pos.y) >followMargin.y :

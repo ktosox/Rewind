@@ -2,9 +2,10 @@
 Level 1 - preferably a motly black screen with the player in the middle, 1 exit, very visible, no camera movement
 also show th controls on screen
 Goals : show the player character, introduce the player to level progression
-Level 2 - a longer tunnel, "C" shped ,  a total of 2 screens wide, and 2 screens tall, 
-expanded details regarding controls
-Goals : introduce the player to camera movement, explain what skills exist, intrduce game pausing
+Level 2 - a longer tunnel, "C" sahped ,  a total of 2 screens wide, and 2 screens tall, 
+expanded details regarding controls, ends with player picking up the Rewind power-up
+Goals : introduce the player to camera movement, explain what skills exist
 Level 3 - a room with traps and a door that closes after a certain ammount of time, make sure the door is on
-the screen as the player spawn 
-Goals : introduce level rewinding mechanic, intrudce timed doors and traps
+the screen as the player spawns
+Goals : introduce level rewinding mechanic, intrudce timed doors and non lethal traps
+Level -   

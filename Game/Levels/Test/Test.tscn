@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Levels/Base/Level.gd" type="Script" id=1]
 [ext_resource path="res://Levels/Base/ItemAcceptor.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Levels/Base/TileMap.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/Base/VHS.tres" type="Material" id=7]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -60,15 +61,16 @@ followMargin = Vector2( 280, 140 )
 [node name="RewindLayer" type="CanvasLayer" parent="."]
 
 [node name="ScreenRewinder" type="AnimationPlayer" parent="RewindLayer"]
-playback_speed = 8.0
+playback_speed = 4.0
 anims/Rewind = SubResource( 2 )
 
 [node name="ReplayScreen" type="TextureRect" parent="RewindLayer"]
-visible = false
+material = ExtResource( 7 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 expand = true
 stretch_mode = 1
+flip_v = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
