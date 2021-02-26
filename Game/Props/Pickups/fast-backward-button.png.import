@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Mech3.png-a57a42be33ec24899e1a9cedb5e8dfc6.stex"
+path="res://.import/fast-backward-button.png-f0f47fb0760b61156054051532b1fc4b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/Mech3/Mech3.png"
-dest_files=[ "res://.import/Mech3.png-a57a42be33ec24899e1a9cedb5e8dfc6.stex" ]
+source_file="res://Props/Pickups/fast-backward-button.png"
+dest_files=[ "res://.import/fast-backward-button.png-f0f47fb0760b61156054051532b1fc4b.stex" ]
 
 [params]
 

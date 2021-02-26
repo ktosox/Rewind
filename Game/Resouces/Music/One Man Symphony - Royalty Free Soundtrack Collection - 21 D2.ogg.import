@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/One Man Symphony - Royalty Free Soundtrack Collection - 21 D2.ogg-98996bf6539f79a753fa271370bd6e2d.oggstr"
+
+[deps]
+
+source_file="res://Resouces/Music/One Man Symphony - Royalty Free Soundtrack Collection - 21 D2.ogg"
+dest_files=[ "res://.import/One Man Symphony - Royalty Free Soundtrack Collection - 21 D2.ogg-98996bf6539f79a753fa271370bd6e2d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

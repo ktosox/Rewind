@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Props/BouncePad.gd" type="Script" id=1]
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 13.0
+
+[sub_resource type="Animation" id=4]
+resource_name = "Fire"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CollisionShape2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 1 ),
+"transitions": PoolRealArray( 1, 0.0915053, -0.5 ),
+"update": 3,
+"values": [ Vector2( 1, 1 ), Vector2( 2, 2 ), Vector2( 1, 1 ) ]
+}
+
+[node name="BouncePad" type="StaticBody2D"]
+collision_layer = 256
+collision_mask = 328
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Polygon2D" type="Polygon2D" parent="CollisionShape2D"]
+polygon = PoolVector2Array( 0.0214539, -20.0579, -5.45863, -18.2017, -9.78965, -12.6333, -9.17094, 14.502, -5.98895, 17.7723, -1.56953, 19.8937, 5.41314, 19.0982, 9.479, 13.4413, 9.5674, -13.4288, 5.58992, -18.1133 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 3 )
+
+[node name="Bounce" type="AnimationPlayer" parent="."]
+anims/Fire = SubResource( 4 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="animation_finished" from="Bounce" to="." method="_on_Bounce_animation_finished"]

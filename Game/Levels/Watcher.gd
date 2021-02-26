@@ -5,7 +5,7 @@ extends Camera2D
 # var a = 2
 # var b = "text"
 export var followPlayer = true
-export var followMargin = Vector2(640,360)
+export var followMargin = Vector2(280,140)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -7,11 +7,13 @@ var isRewinding = false
 var screenCaptures = []
 var cameraCaptures = []
 
+var spawnPoint
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
+	$CanvasLayer/TextureRect.texture = GM.transTex
 	GM.currentLevel = self
+	spawnPoint = GM.currentPlayer.global_position
 	pass # Replace with function body.
 
 func _input(event):
@@ -39,13 +41,15 @@ func toggle_rewind():
 	pass
 
 func end_rewind():
-	
+	GM.reset_level()
 	isRewinding = false
 	$RewindLayer/ReplayScreen.visible = false
 	$RewindLayer/ScreenRewinder.stop()
 	$CaptureRate.start()
 	$Watcher.followPlayer = true
 	$RewindLayer/ReplayScreen.texture = null
+	GM.currentPlayer.canMove = true
+	GM.currentPlayer.reset_stats()
 	pass
 
 func start_rewind():
@@ -58,6 +62,9 @@ func start_rewind():
 
 	$Watcher.global_position = GM.currentPlayer.global_position
 	$Watcher.current=true
+	GM.currentPlayer.global_position = spawnPoint
+	GM.currentPlayer.canMove = false
+
 	pass
 
 

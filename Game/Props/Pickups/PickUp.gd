@@ -1,16 +1,28 @@
 extends Node2D
 
+var itemTypes = {
+	4 : ["player_buff",],
+	
+}
+ 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+
+export var itemID = 0 # 0 leads to random item generated on drop / anythin outside of ransge becomes 0
 
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
+	#randomize ID if 0
+	update_drop()
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func update_drop():
+	#get item data from array
+	#set texture
+	pass
+
+
+func _on_PickUp_body_entered(body):
+	$Animator.play("Grab")
+	pass # Replace with function body.

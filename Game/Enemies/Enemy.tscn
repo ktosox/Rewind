@@ -12,18 +12,18 @@
 [ext_resource path="res://Enemies/Mech.gd" type="Script" id=10]
 [ext_resource path="res://icon.png" type="Texture" id=11]
 
-[sub_resource type="Curve2D" id=13]
+[sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -37.0762, -26.5199, 0, 0, 0, 0, 38.7675, -0.300345 )
 }
 
-[sub_resource type="CircleShape2D" id=15]
+[sub_resource type="CircleShape2D" id=2]
 radius = 70.6374
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=3]
 radius = 201.113
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=4]
 resource_name = "Stop"
 length = 0.5
 tracks/0/type = "value"
@@ -51,7 +51,7 @@ tracks/1/keys = {
 "values": [ Vector2( 10, 0 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=5]
 resource_name = "Walk"
 length = 2.0
 loop = true
@@ -80,14 +80,14 @@ tracks/1/keys = {
 "values": [ Vector2( 10, 0 ), Vector2( 10, 5 ), Vector2( 10, -5 ), Vector2( 10, 0 ) ]
 }
 
-[sub_resource type="ConvexPolygonShape2D" id=10]
-points = PoolVector2Array( -110, -110, 0, 0, 110, -110, 0, -160 )
+[sub_resource type="ConvexPolygonShape2D" id=6]
+points = PoolVector2Array( -110, -110, 0, 0, 110, -110, 45, -150, -45, -150 )
 
-[sub_resource type="CapsuleShape2D" id=14]
+[sub_resource type="CapsuleShape2D" id=7]
 radius = 10.7758
 height = 15.0489
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=8]
 resource_name = "Dissable"
 length = 5.0
 tracks/0/type = "method"
@@ -105,12 +105,12 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=9]
 resource_name = "Guard0"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Mech/Body:rotation_degrees")
+tracks/0/path = NodePath("Head:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -122,7 +122,7 @@ tracks/0/keys = {
 "values": [ 0.0, 90.0, 90.0, 0.0, 0.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Mech/Body/ScanLight:energy")
+tracks/1/path = NodePath("Head/ScanLight:energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -134,12 +134,12 @@ tracks/1/keys = {
 "values": [ 1.0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=10]
 resource_name = "Guard1"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Mech/Body:rotation_degrees")
+tracks/0/path = NodePath("Head:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -151,7 +151,7 @@ tracks/0/keys = {
 "values": [ 90.0, 180.0, 180.0, 90.0, 90.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Mech/Body/ScanLight:energy")
+tracks/1/path = NodePath("Head/ScanLight:energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -163,12 +163,12 @@ tracks/1/keys = {
 "values": [ 1.0 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=11]
 resource_name = "Guard2"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Mech/Body:rotation_degrees")
+tracks/0/path = NodePath("Head:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -180,7 +180,7 @@ tracks/0/keys = {
 "values": [ 180.0, 270.0, 270.0, 180.0, 180.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Mech/Body/ScanLight:energy")
+tracks/1/path = NodePath("Head/ScanLight:energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -192,12 +192,12 @@ tracks/1/keys = {
 "values": [ 1.0 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=12]
 resource_name = "Guard3"
 length = 4.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Mech/Body:rotation_degrees")
+tracks/0/path = NodePath("Head:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -209,7 +209,7 @@ tracks/0/keys = {
 "values": [ 270.0, 360.0, 360.0, 270.0, 270.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Mech/Body/ScanLight:energy")
+tracks/1/path = NodePath("Head/ScanLight:energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -221,7 +221,8 @@ tracks/1/keys = {
 "values": [ 1.0 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=13]
+resource_name = "Hunt"
 length = 0.5
 loop = true
 tracks/0/type = "method"
@@ -239,7 +240,8 @@ tracks/0/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=14]
+resource_name = "Sleep"
 length = 3.0
 loop = true
 tracks/0/type = "method"
@@ -257,7 +259,7 @@ tracks/0/keys = {
 } ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Mech/Body/ScanLight:energy")
+tracks/1/path = NodePath("Head/ScanLight:energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -275,11 +277,11 @@ script = ExtResource( 1 )
 guardQuadrant = 2
 
 [node name="Path" type="Path2D" parent="."]
-curve = SubResource( 13 )
+curve = SubResource( 1 )
 
 [node name="Candy" type="PathFollow2D" parent="Path"]
 position = Vector2( -37.0762, -26.5199 )
-rotation = 0.332842
+rotation = 0.332843
 loop = false
 
 [node name="icon" type="Sprite" parent="Path/Candy"]
@@ -306,14 +308,14 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mech/KillRange"]
-shape = SubResource( 15 )
+shape = SubResource( 2 )
 
 [node name="TrackRange" type="Area2D" parent="Mech"]
 collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mech/TrackRange"]
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="Legs" type="Node2D" parent="Mech"]
 
@@ -341,10 +343,11 @@ flip_v = true
 
 [node name="WalkAnimation" type="AnimationPlayer" parent="Mech/Legs"]
 autoplay = "Walk"
-anims/Stop = SubResource( 11 )
-anims/Walk = SubResource( 12 )
+anims/Stop = SubResource( 4 )
+anims/Walk = SubResource( 5 )
 
 [node name="Body" type="Node2D" parent="Mech"]
+rotation = 4.71239
 
 [node name="lasser2" type="Sprite" parent="Mech/Body"]
 position = Vector2( 17.7447, 2.67536 )
@@ -376,26 +379,26 @@ collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mech/Body/DetectionRange"]
-shape = SubResource( 10 )
+shape = SubResource( 6 )
 
 [node name="ScanLight" type="Light2D" parent="Mech/Body"]
 position = Vector2( -0.0273416, -22.6204 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, -120 )
 color = Color( 0.988235, 0, 0, 1 )
-energy = 3.14
+energy = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mech"]
 rotation = 1.5708
-shape = SubResource( 14 )
+shape = SubResource( 7 )
 
 [node name="JobPatterns" type="AnimationPlayer" parent="."]
 autoplay = "Sleep"
-anims/Dissable = SubResource( 3 )
-anims/Guard0 = SubResource( 4 )
-anims/Guard1 = SubResource( 5 )
-anims/Guard2 = SubResource( 6 )
-anims/Guard3 = SubResource( 7 )
-anims/Hunt = SubResource( 8 )
-anims/Sleep = SubResource( 9 )
+anims/Dissable = SubResource( 8 )
+anims/Guard0 = SubResource( 9 )
+anims/Guard1 = SubResource( 10 )
+anims/Guard2 = SubResource( 11 )
+anims/Guard3 = SubResource( 12 )
+anims/Hunt = SubResource( 13 )
+anims/Sleep = SubResource( 14 )
 [connection signal="body_entered" from="Mech/Body/DetectionRange" to="." method="_on_DetectionRange_body_entered"]

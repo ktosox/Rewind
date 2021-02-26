@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Resouces/Particles/effect4.png" type="Texture" id=1]
+[ext_resource path="res://Resouces/Particles/particl2.png" type="Texture" id=2]
+[ext_resource path="res://Player/MissileAttack.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 4.09758
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.589404, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.67041, 0.67041, 0.67041, 0.145098, 0, 0, 0, 0 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "New Anim"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:gravity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 60 ), Vector2( 0, 0 ), Vector2( 0, -60 ), Vector2( 0, 0 ) ]
+}
+
+[node name="MissileAttack" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 416
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 20
+lifetime = 3.0
+local_coords = false
+draw_order = 1
+texture = ExtResource( 2 )
+gravity = Vector2( 0, 7.56552 )
+initial_velocity = 30.0
+damping = 42.85
+scale_amount = 0.5
+color_ramp = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CPUParticles2D"]
+autoplay = "New Anim"
+playback_speed = 0.7
+"anims/New Anim" = SubResource( 3 )
+
+[node name="effect4" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.2 )
+texture = ExtResource( 1 )
